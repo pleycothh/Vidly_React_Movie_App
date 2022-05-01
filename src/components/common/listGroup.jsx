@@ -1,6 +1,6 @@
 import React from 'react'
 //import _ from 'lodash' // underscore
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 
 const ListGroup = (props) => {
   const {
@@ -9,7 +9,7 @@ const ListGroup = (props) => {
     valueProperty,
     onItemSelect,
     selectedItem,
-    selectAll = 'null',
+    // selectAll = 'null',
   } = props
 
   return (
