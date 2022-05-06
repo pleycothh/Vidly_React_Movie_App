@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Movies from './components/movies'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import Customers from './components/customers'
+import Rentals from './components/rentals'
 import NotFound from './components/notFound'
 import './App.css'
 
@@ -10,9 +12,10 @@ class App extends Component {
       <main className="container">
         <Switch>
           <Route path="/movies" component={Movies} />
-          <Route path="/" exact component={Movies} />
-          {/* order from most spesific one to most generaic one */}
-          <Redirect to="/not-found" />
+          <Route path="/customers" component={Customers} />
+          <Route path="/rentals" component={Rentals} />
+          <Route path="not-found" component={NotFound} />
+          <Redirect from="/" exact to="/movies" />
         </Switch>
       </main>
     )
