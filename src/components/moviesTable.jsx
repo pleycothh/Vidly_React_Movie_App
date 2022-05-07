@@ -1,23 +1,29 @@
-import React, { Component } from 'react'
-import Table from './common/table'
-
-import Like from './common/like'
+import React, { Component } from "react";
+import Table from "./common/table";
+import Like from "./common/like";
+import { Link } from "react-router-dom";
 
 /// promote function to class
 class MoviesTable extends Component {
   columns = [
-    { path: 'title', label: 'Title' },
-    { path: 'genre.name', label: 'Genre' },
-    { path: 'numberInStock', label: 'Stock' },
-    { path: 'dailyRentalRate', label: 'Rate' },
     {
-      key: 'like',
+      path: "title",
+      label: "Title",
+      content: (movie) => (
+        <Link to={`/movies/${movie._id}`}>{movie.title}</Link>
+      ),
+    },
+    { path: "genre.name", label: "Genre" },
+    { path: "numberInStock", label: "Stock" },
+    { path: "dailyRentalRate", label: "Rate" },
+    {
+      key: "like",
       content: (movie) => (
         <Like liked={movie.liked} onClick={() => this.props.onLike(movie)} />
       ),
     },
     {
-      key: 'delete',
+      key: "delete",
       content: (movie) => (
         <button
           onClick={() => this.props.onDelete(movie)}
@@ -27,10 +33,10 @@ class MoviesTable extends Component {
         </button>
       ),
     },
-  ]
+  ];
 
   render() {
-    const { movies, onSort, sortColumn } = this.props
+    const { movies, onSort, sortColumn } = this.props;
 
     return (
       <Table
@@ -39,8 +45,8 @@ class MoviesTable extends Component {
         sortColumn={sortColumn}
         onSort={onSort}
       ></Table>
-    )
+    );
   }
 }
 
-export default MoviesTable
+export default MoviesTable;
